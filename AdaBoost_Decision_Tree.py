@@ -322,24 +322,21 @@ def evaluate_adaboost_single(trees, object):
     # evaluate each tree_i in trees
     for(tree_i, alpha_i) in trees:
         label = evaluate_single(tree_i, object)
+        # if label is in dic
         if label in each_label_obj:
+            # if it is in
+            # each_label_obj[label] is weight corresponding label
             each_label_obj[label] = each_label_obj[label] + alpha_i
         else:
             each_label_obj[label] = alpha_i
 
-    # label have max weight
-    best_label = ''
-    # find max weight
-    max_weight = 0
-
-    # looping through weights 
-    for i in each_label_obj:
-        if each_label_obj[i] > max_weight:
-            max_weight = each_label_obj[i]
-            best_label = i
-
+    # find label have max weight
+        # max(dic, key = dic.get) : returns key that have max value in dic
+    best_label = max(each_label_obj, key = each_label_obj.get)
     return best_label
-    
+
+
+
 def evaluate_adaboost(trees, objects):
     '''
     Evaluates the weighted accuracy of a AdaBoost model on a list of objects. When calling 'evaluate_adaboost_single', the
