@@ -116,23 +116,26 @@ def five_fold_cross_validation_avg_accuracy(x, y, stepsize):
     :type stepsize: float
     :rtype: float as average accuracy across the 5 folds
     """
-#======TEST 1====================
+    # for loop version is in the directory 
+    # suitable for any k-ford and any size of data
+    # .
+#=
     wi = gd(x[60:300], y[60:300], stepsize)
     acc1 = accuracy(wi, x[0:60], y[0:60])
     # print("acc1",acc1)
-#======TEST 2====================
+#=
     wi = gd(np.concatenate([x[0:60],x[120:300]]), np.concatenate([y[0:60],y[120:300]]), stepsize)
     acc2 = accuracy(wi, x[60:120], y[60:120])
     # print("acc2",acc2)
-#======TEST 3====================
+#=
     wi = gd(np.concatenate([x[0:120],x[180:300]]), np.concatenate([y[0:120],y[180:300]]), stepsize)
     acc3 = accuracy(wi, x[120:180], y[120:180])
     # print("acc3",acc3)
-#======TEST 4====================
+#=
     wi = gd(np.concatenate([x[0:180],x[240:300]]), np.concatenate([y[0:180],y[240:300]]), stepsize)
     acc4 = accuracy(wi, x[180:240], y[180:240])
     # print("acc4",acc4)
-#======TEST 5====================
+#=
     wi = gd(x[0:240], y[0:240], stepsize)
     acc5 = accuracy(wi, x[240:300], y[240:300])
     # print("acc5",acc5)
