@@ -1,0 +1,14 @@
+Boosting is basically:
+  step0 Create a model 
+                step1 => tarining data 
+                                 step2 => Create a second model to corect the errors of privious model
+                                 
+  for loop the steps (1,2) untile the max number of moderls added.
+
+__________________________________
+AdaBoost:
+  error = (N - num_correct)/N
+  error = sum(w(i) * t_errorr(i)) / sum(w(i))
+  alpha = ln((1-error)/error)                         # rate of correct compares with incorrect rate   
+  w_i = w_i * exp( alpha * 1 if y!=p(y) else 0)       # to put MORE weight for training IF PREDICTED INCORRECTLY
+
